@@ -1,7 +1,6 @@
-
+// fetches data from API and appends to page
 var getWeather = function () {
 
-    // var userInputVal = userInput;
     $(".searchBtn").click(function () {
         $(".weekWeather").empty();
         $(".weatherContainer").empty();
@@ -67,7 +66,7 @@ var getWeather = function () {
     })
 }
 getWeather();
-
+// stores last searched cities into localStorage
 var lastLookedUp = function () {
     let lastSearched = JSON.parse(localStorage.getItem("city"));
     $("#searchHistory").empty();
@@ -75,11 +74,13 @@ var lastLookedUp = function () {
         $("#searchHistory").append("<button class='lastSearched' type='submit' value='" + lastSearched[i] + "'>" + lastSearched[i] + "</button>")
 
     }
-    $(".lastSearched").on("click", function () {
+    // appends buttons to look-up past searched cities.
+    $(".lastSearched").on("click", function (event) {
+        
         $(".weekWeather").empty();
         $(".weatherContainer").empty();
         $(".fiveDayBox").empty();
-        let userInput = $(".lastSearched").val();
+        let userInput = event.target.value;
         console.log(userInput);
         let lastSearched = JSON.parse(localStorage.getItem("city")) || [];
         if (lastSearched.indexOf(userInput) == -1) {
@@ -140,5 +141,11 @@ var lastLookedUp = function () {
     })
 
 }
+// clears local storage
+    $(".clearHistory").on("click", function(){
+      localStorage.clear();
+      location.reload();  
+    })
+
 lastLookedUp();
 
