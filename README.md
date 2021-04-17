@@ -12,4 +12,5 @@
 ![screenshot](./assets/weather-dashboard-screenshot.png)
 ## Links
 [deployed](https://jacobduden.github.io/Weather-Dashboard/)
+
 [github](https://github.com/jacobduden/Weather-Dashboard)
